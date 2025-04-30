@@ -14,7 +14,7 @@ app.get("/" , (req,res) => {
     res.render("index.ejs");
   });
 
-  app.post('/send-message', (req, res) => {
+  app.post('/', (req, res) => {
     const { name, email, message } = req.body;
     console.log({ name, email, message });
   

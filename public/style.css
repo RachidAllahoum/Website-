@@ -505,6 +505,7 @@ h3 {
     
       .nav-header.active {
         display: flex;
+        margin-top: 20px;
       }
     
       .menu-toggle {
@@ -521,10 +522,14 @@ h3 {
     .mini-width {
         display: flex;
         gap: 290px;
-
     }
     .menu-toggle i{
         font-size: 1rem;
+      }
+      .footer-item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
       }
 }
 @media (max-width: 484px) {
