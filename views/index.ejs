@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Industrex Trading</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+</head>
+
+<body>    
+  <%- include("partials/header.ejs") %>
+        <!--Expertise section-->
+        <div class="expertise-bar">
+          <p>Une Expertise Depuis <strong>2020</strong></p>
+        </div>
+        
+    <!-- Hero Section -->
+    <section class="hero" id="Accueil">
+      <div class="background-blur"></div>
+      <div class="content"><h1>Industrex Trading </h1>
+        <h1> Export & Conseil International </h1>
+      <p>Des Solutions d’Exportation et de Conseil sur Mesure
+        Import & export de matériels industriels | Expertise à l'international</p>
+    </div>
+    </section>
+      
+    <section id="about" class="about">
+       <div class="about-content">
+         <h1>A PROPOS </h1>
+         <hr class="custom-hr">
+         <p>Forte d’une expertise dans le commerce international, Industriex Trading est spécialisée dans l’exportation, l’importation et la distribution de matériels industriels.
+
+          Nous accompagnons nos clients à chaque étape de la gestion logistique à la conformité réglementaire — en leur offrant également un service de conseil pour l’organisation de leurs activités.
+          
+          Basée en France, notre société opère aussi bien en Europe qu’à l’international, en mettant l’accent sur la fiabilité, la rapidité et la personnalisation.</p>
+        </div>
+        <hr class="custom-hr"> 
+        </section>
+
+    <!-- About and International Presence -->
+    <section class="why-us">
+      <h1>Pourquoi Nous Choisir ?</h1>
+      <hr class="custom-hr">
+      <div class="why-grid">
+        <div class="why-card">
+          <i class="fas fa-cogs"></i>
+          <h3>Expertise Technique </h3>
+          <p> Une connaissance approfondie des matériaux industriels et des réglementations douanières. </p>
+        </div>
+        <div class="why-card">
+          <i class="fas fa-globe-europe"></i>
+          <h3>Réseau International</h3>
+          <p> Présence et expérience sur plusieurs marchés, en Europe et à l’étranger.</p>
+        </div>
+        <div class="why-card">
+          <i class="fas fa-tools"></i>
+          <h3>Services Complets</h3>
+          <p>De l’achat à la livraison en passant par le conseil et la gestion logistique.</p>
+        </div>
+        <div class="why-card">
+          <i class="fas fa-handshake"></i>
+          <h3>Partenaire de Confiance</h3>
+          <p>Transparence, accompagnement sur mesure, et respect des délais.</p>
+        </div>
+      </div>
+      <hr class="custom-hr">
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+      <h1>NOS SERVICES</h1>
+      <hr class="custom-hr">
+      <div class="services" >
+        <div class="service-item" >
+          <i class="fas fa-box-open" ></i>
+          <h3>Import & Export de biens industriels</h3>
+          <p>Organisation complète de l’importation et l’exportation de matériels industriels, pièces techniques, et équipements professionnels vers divers marchés.</p>
+        </div>
+        <div class="service-item" >
+          <i class="fas fa-industry"  ></i> 
+          <h3>Distribution en gros (B2B)</h3>
+          <p>Approvisionnement en grande quantité pour entreprises, revendeurs ou projets industriels, avec gestion logistique intégrée.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-search-location" ></i>
+          <h3>Sourcing & approvisionnement stratégique</h3>
+          <p>Recherche, évaluation et gestion de fournisseurs fiables pour garantir qualité, délais et coûts maîtrisés.</p>
+        </div>
+      </div>
+      <hr class="custom-hr">
+    </section>
+
+    <!-- Product catalog Section -->
+     <section id="catalog" class="catalog-section">
+      <h1>Nos Catégories de Produits</h1>
+      <hr class="custom-hr">
+      <div class="catalog-container">
+      <div class="catalog-item">
+        <i class="fas fa-cogs"></i>
+        <h3>Équipements Industriels</h3>
+        <p>Machines et équipements pour les chaînes de production.</p>
+      </div>
+      <div class="catalog-item">
+        <i class="fas fa-tools"></i>
+        <h3>Outils Professionnels</h3>
+        <p>Outils techniques pour les entreprises BTP et PME.</p>
+      </div>
+      <div class="catalog-item">
+        <i class="fas fa-boxes"></i>
+      <h3>Fournitures & Consommables</h3>
+      <p>Emballages, fournitures de bureau, composants industriels.</p>
+      </div>
+      <div class="catalog-item">
+        <i class="fas fa-solar-panel"></i>
+        <h3>Composants Énergétiques</h3>
+        <p>Panneaux solaires, batteries, et régulateurs industriels.</p>
+      </div>
+      <div class="catalog-item">
+        <i class="fas fa-plug"></i>
+        <h3>Matériel Électrique</h3>
+        <p>Câblages, transformateurs et éclairages pour sites industriels.</p>
+      </div>
+    </div>
+    <hr class="custom-hr">
+     </section>
+     <!-- contact Section -->
+    <section id="contact" class="contact-section">
+      <h2>Contactez-Nous</h2>
+      <hr class="custom-hr">
+      <p>Vous avez des questions ou besoin d’assistance ? N’hésitez pas à nous contacter.</p>
+      <form class="contact-form" action="/send-message" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Votre nom complet" required>
+        <input type="text" name="company" placeholder="Nom de l'entreprise" required>
+        <input type="email" name="email" placeholder="Adresse email professionnelle" required>
+        <input type="tel" name="phone" placeholder="Numéro de téléphone">
+        <input type="text" name="country" placeholder="De quelle pays ">
+        <input type="text" name="type-of-demand" placeholder="Quelle est le type de votre demand">
+      
+        <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+      
+        <button type="submit">Envoyer</button>
+      </form>
+      <hr class="custom-hr">
+    </section>
+
+    <%- include("partials/footer.ejs") %>
+
+<!-- AOS JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+  </body>
+
+</html>
