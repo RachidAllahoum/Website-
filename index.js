@@ -1,39 +1,63 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { writeFile } from 'node:fs/promises';
-import { Buffer } from 'node:buffer';
+import pg from 'pg';
+import 'dotenv/config'; 
 const app = express();
 const port = 3000;
 
+const pool = new pg.Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+});
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); 
+app.use(express.static('public'));
+
 
 const Year = new Date().getFullYear();
 app.get("/" , (req,res) => {
     res.render("index.ejs");
   });
 
-  app.post('/', (req, res) => {
-    const { name, email, message } = req.body;
-    console.log({ name, email, message });
+app.post('/contact', async (req, res) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    console.error('No form data received. Headers:', req.headers);
+    return res.status(400).json({ error: 'Form data is required' });
+  }
+
+  const { name, company, email, phone, country, message } = req.body;
+
+
+  let client;
+  try {
+    client = await pool.connect();
+    const result = await client.query(
+      `INSERT INTO contacts 
+       (name, company, email, phone, country, message) 
+       VALUES ($1, $2, $3, $4, $5, $6) 
+       RETURNING id`,
+      [name, company, email, phone, country, message]
+    );
+    
+    console.log('Message saved with ID:', result.rows[0].id);
+    return res.redirect('/#contact?success=true');
+  } catch (err) {
+    console.error('Database error:', err);
+    return res.status(500).json({ 
+      error: 'Erreur du serveur. Veuillez réessayer plus tard.' 
+    });
+  } finally {
+    if (client) client.release();
+  }
+  res.redirect("/");
+});
+
   
-    // Prepare the data to write
-    const fileContent = `Name: ${name}\nEmail: ${email}\nMessage: ${message}\n\n`;
-  
-    // Respond to the client immediately
-    res.redirect('/');
-  
-    // Write to the file asynchronously (won't delay response)
-    (async () => {
-      try {
-        await writeFile('message.txt', fileContent, { flag: 'a' }); // 'a' appends instead of overwriting
-        console.log('File written successfully!');
-      } catch (err) {
-        console.error('Failed to write file:', err);
-      }
-    })();
-  });
+
 
 
 
